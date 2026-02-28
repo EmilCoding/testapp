@@ -1,1 +1,5 @@
-from app.module import func as main
+from app.module import func
+
+__all__ = [
+    'func',
+]

@@ -1,5 +1,9 @@
 """Simple app the prints "Hello, World!" to the console."""
-from app import main
+from app.module import func
+
+
+def main() -> None:
+    func()
 
 
 if __name__ == "__main__":

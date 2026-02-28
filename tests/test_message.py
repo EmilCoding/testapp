@@ -1,5 +1,5 @@
 import pytest
-from app import main
+from app import func
 
 
 def test_message(monkeypatch) -> None:
@@ -11,7 +11,7 @@ def test_message(monkeypatch) -> None:
         givenkwargs = kwargs   
 
     monkeypatch.setattr('builtins.print', mockprint)
-    main()
+    func()
     
     assert givenargs == ('Hello, World!', )
     assert not givenkwargs
