@@ -9,3 +9,6 @@ readme = "README.md"
 description = "An application that can print 'Hello, World!' to the console."
 requires-python = ">=3.8"
 authors = [{name = "ELB"}]
+
+[project.scripts]
+app = "app:func"
