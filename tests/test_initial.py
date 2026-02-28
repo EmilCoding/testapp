@@ -8,4 +8,4 @@ def test_trivial() -> None:
 
 
 def test_import() -> None:
-    import app as _
+    import app as _  # noqa: F401
