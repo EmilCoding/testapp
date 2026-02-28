@@ -1,17 +1,10 @@
-import pytest
+import io
+import sys
 from app import func
 
-
 def test_message(monkeypatch) -> None:
-    givenargs = None
-    givenkwargs = None
-    def mockprint(*args, **kwargs) -> None:
-        nonlocal givenargs, givenkwargs
-        givenargs = args    
-        givenkwargs = kwargs   
+    fake_out = io.StringIO()
+    monkeypatch.setattr(sys, "stdout", fake_out)
 
-    monkeypatch.setattr('builtins.print', mockprint)
     func()
-    
-    assert givenargs == ('Hello, World!', )
-    assert not givenkwargs
+    assert fake_out.getvalue() == 'Hello, World!\n'
