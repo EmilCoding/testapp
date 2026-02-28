@@ -1,8 +1,5 @@
 """Simple app the prints "Hello, World!" to the console."""
-
-
-def main() -> None:
-    print("Hello, World!")
+from app import main
 
 
 if __name__ == "__main__":
