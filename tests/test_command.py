@@ -1,11 +1,10 @@
 """Test if the command works"""
-import os
-import pytest
+import subprocess
 
 
 def test_running_module() -> None:
-    assert not os.system('python -m app'), "Error was raised during module run"
+    assert subprocess.run(['python', '-m', 'app']), "Error was raised during module run"
 
 
 def test_using_command() -> None:
-    assert not os.system('app'), "Error was raised during 'app' command."
+    assert subprocess.run(["app"]), "Error was raised during 'app' command."
