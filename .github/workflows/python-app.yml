@@ -27,14 +27,23 @@ jobs:
       uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
+    - name: Install flake8, mypy, pytest, build, and wheel
+      run : |
         python -m pip install --upgrade pip
+        pip install build wheel
         pip install flake8 mypy pytest
-        pip install -r requirements.txt
+    
+    - name: Install dependencies (Windows)
+      if: runner.os == 'Windows'
+      run: | 
+        if (Test-Path requirements.txt) { pip install -r requirements.txt }
+    - name: Install dependencies (Not windows)
+      if: runner.os != 'Windows'
+      run: |
+        if [-f requirements.txt]; pip install -r requirements.txt; fi
+  
     - name: Build package
       run : |
-        pip install build wheel
         python -m build
         pip install .
     - name: Check types with mypy
